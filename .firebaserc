@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "test-angular-efd5f": {
+      "hosting": {
+        "test": [
+          "test-angular-efd5f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "test-angular-efd5f"
+  }
+}

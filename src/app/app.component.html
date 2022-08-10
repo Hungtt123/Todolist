@@ -1,0 +1,32 @@
+<div class="parent">
+    <div class="content">
+    <h1 class="title">TO DO LIST</h1>
+    <div class="form" >
+        <form>
+            <div>
+                <div class="group"> Nhập ID
+                </div>
+            <input type="text" name="id" [(ngModel)] ="currentUser.id" />
+            <div class="group"> Nhập Họ và Tên
+            </div>
+            <input type="text" name="name" [(ngModel)] ="currentUser.name" />
+            <div class="group"> Nhập ngày tháng năm
+            </div>
+            <input type="date" name="age" [(ngModel)] ="currentUser.dob" />
+            <div class="group"> Nhập công việc cần làm
+            </div>
+            <input type="text" name="Work" [(ngModel)] ="currentUser.Work" />
+            </div>
+
+            <button class="add"(click)="addUser()">Add</button>
+            
+        </form>
+    </div>
+    </div>
+    <div class="todo" >
+        <div class="list" *ngFor="let user of users$ |async"> {{user.id}}-{{user.name}}-{{user.dob}}-{{user.Work}}
+            <button (click)="deleteUserId(user.id)">delete</button>
+            <button class="update">Update</button>
+        </div>
+    </div>
+</div>
