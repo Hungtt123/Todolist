@@ -24,7 +24,7 @@ export class UserService {
   delete(userId: string){
     return deleteDoc(doc(this.db, 'users/' +userId));
   }
-  updateNote(user: User) {
+  update(user: User) {
     return setDoc(doc(this.db, 'users/' + user.id), user);
   }
 }

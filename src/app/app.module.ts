@@ -16,6 +16,8 @@ import { UserReducer } from 'src/reducers/user.reducer';
 import { UserEffects } from 'src/effects/user.effect';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { AuthReducer } from 'src/reducers/auth.reducer';
+import { AuthEffects } from 'src/effects/auth.effect';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({user: UserReducer}, {}),
-    EffectsModule.forRoot([UserEffects]),
+    StoreModule.forRoot({user: UserReducer, auth: AuthReducer} ),
+    EffectsModule.forRoot([UserEffects, AuthEffects]),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAnalytics(() => getAnalytics()),
     provideAuth(() => getAuth()),

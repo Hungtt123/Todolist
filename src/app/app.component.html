@@ -1,3 +1,10 @@
+<div class="button1">
+    <button (click)="login()" >Login</button>
+    <button (click)="logout()">Logout</button>
+  </div>
+  <div>
+    {{idToken$ |async }}
+    </div>
 <div class="parent">
     <div class="content">
     <h1 class="title">TO DO LIST</h1>
@@ -24,9 +31,12 @@
     </div>
     </div>
     <div class="todo" >
-        <div class="list" *ngFor="let user of users$ |async"> {{user.id}}-{{user.name}}-{{user.dob}}-{{user.Work}}
+        <h1>Danh Sách Công Việc</h1>
+        <div class="list" *ngFor="let user of users$ |async"> {{user.id}} {{user.name}} {{user.dob}} {{user.Work}}
+            
             <button (click)="deleteUserId(user.id)">delete</button>
             <button class="update">Update</button>
+            
         </div>
     </div>
 </div>

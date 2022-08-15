@@ -36,10 +36,9 @@ import { User } from "src/model/user.model";
                 catchError((error) => of(UserActions.deleteUserIdFailure(error.message)))
             ))));
 
-            updateNote$ = createEffect(() =>
-            this.actions$.pipe(
+            updateUser$ = createEffect(() => this.actions$.pipe(
               ofType(UserActions.updateUser),
-              switchMap((action) => from(this.userService.updateNote(action.userId))),
+              switchMap((action) => from(this.userService.update(action.userId))),
               map(() => UserActions.updateUserSuccess()),
               catchError((error) => {
                 return of(UserActions.updateUserFail({ error: error }));

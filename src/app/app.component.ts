@@ -3,6 +3,8 @@ import { UserState } from 'src/state/user.state';
 import { Store } from '@ngrx/store'
 import * as UserActions from "src/actions/user.action"
 import { User } from 'src/model/user.model';
+import { AuthState } from 'src/state/auth.state'
+import * as AuthActions from 'src/actions/auth.action'
 
 @Component({
   selector: 'app-root',
@@ -20,8 +22,14 @@ export class AppComponent implements OnInit {
     dob: '',
     
   }
-  
-  constructor(private store: Store<{ user: UserState }>) { }
+  idToken$ = this.store.select((state) => state.auth.idToken);
+  constructor(private store: Store<{ user: UserState, auth: AuthState }>) { }
+  login(){
+    this.store.dispatch(AuthActions.login());
+  }
+  logout(){
+    this.store.dispatch(AuthActions.logout());
+  }
   ngOnInit(): void {
     this.userState$.subscribe(state => {
       console.log(state);
@@ -47,7 +55,7 @@ export class AppComponent implements OnInit {
   deleteUserId(userId: string){
     this.store.dispatch(UserActions.deleteUserId({userId}));
   }
-  // updateUserId(){
-  //   this.store.dispatch(UserActions.updateUserId({userId}))
+  // updateUser(){
+  //   this.store.dispatch(UserActions.updateUser({user}))
   // }
 }
